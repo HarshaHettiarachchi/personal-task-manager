@@ -1,0 +1,641 @@
+/* ==========================================================
+   Personal Task Manager - Modern Glassmorphism Styling
+   Vibrant Purple, Blue & Pink Gradient Theme
+   ========================================================== */
+
+/* 1. Global Reset & Theme Variables */
+:root {
+  /* Vibrant Accent Gradients */
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --primary-hover: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+  --accent-purple: #8b5cf6;
+  --accent-pink: #ec4899;
+  --accent-blue: #3b82f6;
+
+  /* Glassmorphism Surface */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 0 35px rgba(139, 92, 246, 0.15);
+  --glass-inner-glow: inset 0 1px 1px rgba(255, 255, 255, 0.85);
+
+  /* Typography & Colors */
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --danger-color: #ef4444;
+  --danger-bg: #fee2e2;
+  --success-color: #10b981;
+
+  /* UI Dimensions & Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-card: 26px;
+
+  /* Transitions */
+  --transition-fast: all 0.18s ease;
+  --transition-smooth: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 18px;
+  position: relative;
+  overflow-x: hidden;
+  /* Deep vibrant background mesh */
+  background: 
+    radial-gradient(circle at 10% 15%, rgba(139, 92, 246, 0.65) 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(236, 72, 153, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, rgba(59, 130, 246, 0.65) 0%, transparent 45%),
+    linear-gradient(135deg, #1e1b4b 0%, #2e1065 45%, #4a044e 100%);
+  background-attachment: fixed;
+}
+
+/* 2. Floating Ambient Background Glows */
+.bg-shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.shape-1 {
+  width: 420px;
+  height: 420px;
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.3));
+  animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.shape-2 {
+  width: 380px;
+  height: 380px;
+  top: 15%;
+  right: -90px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.75), rgba(217, 70, 239, 0.25));
+  animation: floatOrb 14s ease-in-out infinite alternate-reverse;
+}
+
+.shape-3 {
+  width: 360px;
+  height: 360px;
+  bottom: -90px;
+  left: 28%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.7), rgba(99, 102, 241, 0.25));
+  animation: floatOrb 16s ease-in-out infinite alternate;
+}
+
+/* 3. Glassmorphism Main Card Container */
+.app-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 580px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inner-glow);
+  padding: 38px 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 4. Header Styling */
+.app-header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(236, 72, 153, 0.15));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #7c3aed;
+  margin-bottom: 12px;
+}
+
+.badge-sparkle {
+  color: var(--accent-pink);
+  font-size: 0.85rem;
+}
+
+.app-header h1 {
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 35%, #8b5cf6 65%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-header .subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* 5. Input Form & Visual Buttons */
+.task-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.task-form input[type="text"] {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border: 1.5px solid rgba(203, 213, 225, 0.8);
+  border-radius: var(--radius-lg);
+  outline: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text-main);
+  transition: var(--transition-smooth);
+}
+
+.task-form input[type="text"]::placeholder {
+  color: #94a3b8;
+}
+
+.task-form input[type="text"]:focus {
+  border-color: var(--accent-purple);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18), 0 6px 16px rgba(139, 92, 246, 0.08);
+}
+
+/* Primary "Add Task" Button */
+.btn {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px 22px;
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: #ffffff;
+  box-shadow: 0 8px 20px -4px rgba(139, 92, 246, 0.45);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -4px rgba(236, 72, 153, 0.45);
+  filter: brightness(1.04);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-icon {
+  flex-shrink: 0;
+  stroke: #ffffff;
+}
+
+/* Secondary Button ("Clear Completed") */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  color: var(--text-muted);
+  font-size: 0.825rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.btn-secondary:hover {
+  color: var(--danger-color);
+  background: rgba(254, 242, 242, 0.9);
+  border-color: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* 6. Controls Bar & Filter Tabs */
+.task-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filters {
+  display: inline-flex;
+  background: rgba(241, 245, 249, 0.85);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.filter-btn {
+  border: none;
+  background: transparent;
+  padding: 7px 16px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.filter-btn:hover {
+  color: #1e1b4b;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+/* 7. Task List & Items */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 390px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Custom Sleek Scrollbar */
+.task-list::-webkit-scrollbar {
+  width: 6px;
+}
+.task-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.task-list::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.8);
+  border-radius: 4px;
+}
+.task-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.9);
+}
+
+/* Task Item */
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(226, 232, 240, 0.85);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: var(--transition-smooth);
+  animation: slideInTask 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-item:hover {
+  border-color: rgba(168, 85, 247, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -4px rgba(99, 102, 241, 0.12);
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Custom Circular Completion Checkbox */
+.task-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.task-checkbox:hover {
+  border-color: var(--accent-purple);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.task-checkbox:checked {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(139, 92, 246, 0.35);
+}
+
+.task-checkbox:checked::before {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* Task Text Typography */
+.task-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.45;
+  word-break: break-word;
+  transition: var(--transition-smooth);
+}
+
+/* Completed Task State */
+.task-item.completed {
+  background: rgba(248, 250, 252, 0.7);
+  border-color: rgba(226, 232, 240, 0.6);
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* Circular Delete Action Button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  margin-left: 8px;
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.delete-btn svg {
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: var(--danger-bg);
+  color: var(--danger-color);
+  transform: scale(1.12);
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.2);
+}
+
+.delete-btn:hover svg {
+  transform: rotate(6deg);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* 8. Stylish Empty State */
+.empty-state {
+  text-align: center;
+  padding: 44px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  animation: slideInTask 0.3s ease;
+}
+
+.empty-icon-wrap {
+  width: 74px;
+  height: 74px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(236, 72, 153, 0.12));
+  border: 1.5px solid rgba(139, 92, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-purple);
+  box-shadow: 0 10px 25px -4px rgba(139, 92, 246, 0.2);
+  animation: pulseIcon 3s ease-in-out infinite alternate;
+}
+
+.empty-icon {
+  stroke: var(--accent-purple);
+}
+
+#empty-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 9. Footer & Task Counter Badges */
+.app-footer {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.counter-badge {
+  background: rgba(99, 102, 241, 0.08);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: 0.825rem;
+}
+
+.storage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(241, 245, 249, 0.8);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  color: #475569;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+/* 10. Keyframe Animations */
+@keyframes floatOrb {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(30px) scale(1.08);
+  }
+}
+
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 8px 20px -4px rgba(139, 92, 246, 0.2);
+  }
+  100% {
+    transform: scale(1.06);
+    box-shadow: 0 14px 28px -4px rgba(236, 72, 153, 0.25);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.75;
+  }
+}
+
+@keyframes slideInTask {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 11. Fully Responsive Adjustments */
+@media (max-width: 600px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  .app-container {
+    padding: 28px 20px;
+    border-radius: 22px;
+  }
+
+  .app-header h1 {
+    font-size: 1.85rem;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-form input[type="text"] {
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 13px 18px;
+  }
+
+  .task-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .filter-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 10px;
+  }
+
+  .btn-secondary {
+    align-self: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .app-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}

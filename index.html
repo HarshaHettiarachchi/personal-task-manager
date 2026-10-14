@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsha Hettiarachchi</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Gradient Background Elements -->
+  <div class="bg-shape shape-1" aria-hidden="true"></div>
+  <div class="bg-shape shape-2" aria-hidden="true"></div>
+  <div class="bg-shape shape-3" aria-hidden="true"></div>
+
+  <!-- Glassmorphism Main Card -->
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-badge">
+        <span class="badge-sparkle">✦</span>
+        <span>Personal Workspace</span>
+      </div>
+      <h1>Harsha Hettiarachchi</h1>
+      <p class="subtitle">Stay organized, focused, and achieve your daily goals</p>
+    </header>
+
+    <main>
+      <!-- Task Input Form -->
+      <form id="task-form" class="task-form">
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="task-input" 
+            placeholder="What would you like to accomplish?" 
+            autocomplete="off"
+            required
+          />
+        </div>
+        <button type="submit" id="add-btn" class="btn btn-primary">
+          <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Add Task</span>
+        </button>
+      </form>
+
+      <!-- Task Controls & Filters -->
+      <div class="task-controls">
+        <div class="filters" role="tablist" aria-label="Task status filters">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="active">Active</button>
+          <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        <button type="button" id="clear-completed-btn" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          <span>Clear Completed</span>
+        </button>
+      </div>
+
+      <!-- Task List Container -->
+      <ul id="task-list" class="task-list" aria-label="Task list"></ul>
+
+      <!-- Stylish Empty State -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon-wrap">
+          <svg class="empty-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="4" ry="4"></rect>
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <line x1="9" y1="18" x2="15" y2="18"></line>
+          </svg>
+        </div>
+        <p id="empty-text">No tasks yet! Add a task above to get started.</p>
+      </div>
+
+      <!-- Footer Info -->
+      <footer class="app-footer">
+        <div class="counter-badge">
+          <span id="task-count">0 tasks left</span>
+        </div>
+        <div class="storage-badge">
+          <span class="status-dot"></span>
+          <span>Saved in browser</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
